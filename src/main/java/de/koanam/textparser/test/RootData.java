@@ -1,21 +1,28 @@
 package de.koanam.textparser.test;
 
-import de.koanam.textparser.annotations.ParsableAttribute;
-import de.koanam.textparser.annotations.ParsableElement;
+import java.util.List;
 
-@ParsableElement
+import de.koanam.textparser.annotations.ParseableAttribute;
+import de.koanam.textparser.annotations.ParseableAttributeLength;
+import de.koanam.textparser.annotations.ParseableElement;
+import de.koanam.textparser.annotations.ParseableList;
+
+@ParseableElement
 public class RootData {
 
-	@ParsableAttribute(start = 0, length = 3)
-	public Integer number;
+	@ParseableAttributeLength(length=5)
+	@ParseableAttribute(order = 20)
+	private String text;
 
-	@ParsableAttribute(start = 3, length = 5)
-	public String text;
+	@ParseableList(amountIndicator=1)
+	@ParseableAttribute(order = 30)
+	private List<ChildData> childData;
 
-	@ParsableAttribute(start = 8, length = 8)
-	public ChildData childData;
+	@ParseableAttributeLength(length=3)
+	@ParseableAttribute(order = 10)
+	private Integer number;
 
-	public Integer nothing;
+	private Integer nothing;
 
 	public Integer getNumber() {
 		return number;

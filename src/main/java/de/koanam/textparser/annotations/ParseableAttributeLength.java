@@ -7,14 +7,20 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Gibt die Länge des Attributes an
+ * Wird length gesetzt hat das Attribut eine feste Länge
+ * Wird lengthIndicator gesetzt, steht vor dem eigentlichen Attribut noch die Länge
+ * @author Flo
+ *
+ */
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-public @interface ParsableAttribute {
-
-	int start();
+public @interface ParseableAttributeLength {
 	
-	int length();
+	int length() default 0;
 	
+	int lengthIndicator() default 0;
 }

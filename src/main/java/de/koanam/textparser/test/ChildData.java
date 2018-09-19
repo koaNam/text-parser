@@ -1,16 +1,26 @@
 package de.koanam.textparser.test;
 
-import de.koanam.textparser.annotations.ParsableAttribute;
-import de.koanam.textparser.annotations.ParsableElement;
+import java.util.List;
 
-@ParsableElement
+import de.koanam.textparser.annotations.ParseableAttribute;
+import de.koanam.textparser.annotations.ParseableAttributeLength;
+import de.koanam.textparser.annotations.ParseableElement;
+import de.koanam.textparser.annotations.ParseableList;
+
+@ParseableElement
 public class ChildData {
 
-	@ParsableAttribute(start = 0, length = 4)
-	public Double komma;
+	@ParseableAttributeLength(length=4)
+	@ParseableAttribute(order = 10)
+	private Double komma;
 
-	@ParsableAttribute(start=4, length=4)
-	public String test;
+	@ParseableAttributeLength(length=4)
+	@ParseableAttribute(order = 20)
+	private String test;
+
+	@ParseableList(amountIndicator = 1, elementLength=2)
+	@ParseableAttribute(order=30)
+	private List<Integer> numberList;
 
 	public Double getKomma() {
 		return komma;
@@ -28,9 +38,17 @@ public class ChildData {
 		this.test = test;
 	}
 
+	public List<Integer> getNumberList() {
+		return numberList;
+	}
+
+	public void setNumberList(List<Integer> numberList) {
+		this.numberList = numberList;
+	}
+
 	@Override
 	public String toString() {
-		return "ChildData [komma=" + komma + ", test=" + test + "]";
+		return "ChildData [komma=" + komma + ", test=" + test + ", numberList=" + numberList + "]";
 	}
 
 }
