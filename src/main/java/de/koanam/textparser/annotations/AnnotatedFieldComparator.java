@@ -1,9 +1,7 @@
-package de.koanam.textparser.parser;
+package de.koanam.textparser.annotations;
 
 import java.lang.reflect.Field;
 import java.util.Comparator;
-
-import de.koanam.textparser.annotations.ParseableAttribute;
 
 public class AnnotatedFieldComparator implements Comparator<Field> {
 
